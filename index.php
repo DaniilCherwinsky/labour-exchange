@@ -12,9 +12,7 @@
     <link rel="stylesheet" href="style.css">
     <title>Биржа труда</title>
 </head>
-
 <body>
-
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Job</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,35 +54,15 @@
     <hr>
 
     <div class="registration container" id="vacancies">
-        <!--<div class="row justify-content-start">
-                    <form>
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Email address</label>
-                          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                        </div>
-                        <div class="form-group">
-                            <label for="formGroupExampleInput">Name</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Your Name">
-                        </div>
-                        <div class="form-group">
-                            <label for="formGroupExampleInput">Specialty</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Your Specialty">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                      </form>
-                </div>-->
         <?php
-        require_once 'conection.php'; // подключаем скрипт
+        require_once 'conection.php';
 
-        // подключаемся к серверу
         $link = mysqli_connect($host, $user, $password, $database) or die("Ошибка " . mysqli_error($link));
 
-        // выполняем операции с базой данных
         $query = "SELECT * FROM Vakancies";
         $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link));
         if ($result) {
-            $rows = mysqli_num_rows($result); // количество полученных строк
+            $rows = mysqli_num_rows($result);
 
             //echo "<table><tr><th>City</th><th>Job</th><th>Salary</th><th>Time work</th><th></tr>";
             ?>
@@ -98,7 +76,6 @@
                             <th scope="col">Salary, $</th>
                             <th scope="col">Time Work</th>
                             <th scope="col">Response</th>
-                            <!--Button-->
                         </tr>
                     </thead>
                     <tbody>
@@ -114,11 +91,9 @@
                         }
                         echo "</table>";
 
-                        // очищаем результат
                         mysqli_free_result($result);
                     }
 
-                    // закрываем подключение
                     mysqli_close($link);
 
 
@@ -126,12 +101,36 @@
                     </tbody>
                 </table>
             </div>
+            
+            <!--Modal Form-->
+            <div id="myModal" class="modal row justify-content-start">
+                    <form id="modal-content">
+                    <span class="close">&times;</span>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Email address</label>
+                          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Name</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Your Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Specialty</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Your Specialty">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                      </form>
+                </div>
+                <button id ="myBtn">Open</button>
+
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

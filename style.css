@@ -106,3 +106,25 @@
 .atuin-btn:hover:before {
     left: 100%;
 }
+#myModal{
+    justify-content:center;
+    align-items:center;
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    margin-left: calc(1920px/3);
+    margin-top: calc(1040px/3);
+    width: 650px;
+    height: 450px;
+    overflow: auto;
+    background-color: rgb(255, 255, 255);
+}
+#modal.content{
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
