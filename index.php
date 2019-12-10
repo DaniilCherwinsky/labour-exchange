@@ -122,8 +122,6 @@
                         <button type="submit" class="btn btn-primary">Submit</button>
                       </form>
                 </div>
-                <button id ="myBtn">Open</button>
-
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
