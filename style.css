@@ -1,4 +1,8 @@
-
+body{
+    -webkit-user-select: none;
+    margin: 0;
+    padding: 0;
+}
 .cont{
     height: 580px;
     background-image: url('img/back2.jpg');
@@ -107,24 +111,22 @@
     left: 100%;
 }
 #myModal{
-    justify-content:center;
-    align-items:center;
+    border-radius: 10px;
     display: none;
-    position: fixed;
+   /* position: fixed;
     z-index: 1;
     left: 0;
     top: 0;
-    margin-left: calc(1920px/3);
-    margin-top: calc(1040px/3);
-    width: 650px;
-    height: 450px;
-    overflow: auto;
+    margin-left: calc(1920px/2.5);
+    margin-top: calc(1040px/3);*/
+    width: 390px;
+    height: 290px;
+    /*overflow: auto;*/
     background-color: rgb(255, 255, 255);
+    border: 2px solid #888;
 }
-#modal.content{
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
+.modal-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

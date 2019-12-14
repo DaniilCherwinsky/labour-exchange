@@ -22,7 +22,6 @@
             <div class="navbar-nav">
                 <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
                 <a class="nav-item nav-link" href="#vacancies">Vakancies</a>
-                <a class="nav-item nav-link" href="#">Pricing</a>
             </div>
         </div>
     </nav>
@@ -59,12 +58,12 @@
 
         $link = mysqli_connect($host, $user, $password, $database) or die("Ошибка " . mysqli_error($link));
 
+
         $query = "SELECT * FROM Vakancies";
+
         $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link));
         if ($result) {
             $rows = mysqli_num_rows($result);
-
-            //echo "<table><tr><th>City</th><th>Job</th><th>Salary</th><th>Time work</th><th></tr>";
             ?>
             <div class="row">
                 <h1 id="vak">Vakancies</h1>
@@ -103,25 +102,23 @@
             </div>
             
             <!--Modal Form-->
-            <div id="myModal" class="modal row justify-content-start">
-                    <form id="modal-content">
-                    <span class="close">&times;</span>
+            <div class="modal-container">
+            <div id="myModal" class="modal">
+            <span class="close">&times;</span>
+                    <form id="modal-content" class="col-lg-10">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Email address</label>
                           <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                          <small id="emailHelp" class="form-text text-muted">This address will receive a response from the employer</small>
                         </div>
                         <div class="form-group">
                             <label for="formGroupExampleInput">Name</label>
                             <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Your Name">
                         </div>
-                        <div class="form-group">
-                            <label for="formGroupExampleInput">Specialty</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Your Specialty">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Send</button>
                       </form>
                 </div>
+            </div>            
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
