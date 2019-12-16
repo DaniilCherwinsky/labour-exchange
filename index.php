@@ -82,7 +82,7 @@
                         for ($i = 0; $i < $rows; ++$i) {
                             $row = mysqli_fetch_row($result);
                             echo "<tr>";
-                            for ($j = 0; $j < 4; ++$j){
+                            for ($j = 1; $j < 5; ++$j){
                                 echo "<td>$row[$j]</td>";
                             }
                             echo "<td><button class=\"atuin-btn\">Response</button></td>";

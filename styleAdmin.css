@@ -1,0 +1,36 @@
+#addButton{
+    background-color: red;
+    box-shadow: 0 5px 0 darkred;
+    color: white;
+    padding: 1em 1.5em;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+#addButton:hover{
+    background-color: #ce0606;
+    cursor: pointer;
+}
+#addButton:active{
+    box-shadow: none;
+    top: 5px;
+}
+
+#buttonDel{
+    background-color: red;
+    box-shadow: 0 5px 0 darkred;
+    color: white;
+    padding: 1em 1.5em;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+#buttonDel:hover{
+    background-color: #ce0606;
+    cursor: pointer;
+}
+#buttonDel:active{
+    box-shadow: none;
+    top: 5px;
+}

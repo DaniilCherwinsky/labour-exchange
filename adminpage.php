@@ -7,7 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="styleAdmin.css">   
     <title>AdminPage</title>
   </head>
   <body>
@@ -43,30 +43,17 @@
             <?php
         require_once 'conection.php';
 
-        $link = mysqli_connect($host, $user, $password, $database) or die("Ошибка " . mysqli_error($link));
-
 
         $query = "SELECT * FROM Vakancies";
 
         $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link));
         if ($result) {
-            $rows = mysqli_num_rows($result);
-            ?>
-            <!--Delete-->
-            <?php
-            $db = require_once 'conection.php';
-                if(isset($_POST["del"]) && $_POST["del"] != '') {
-                    $del = $_POST["del"]; # Это лучше отфильтрировать для безопастности запроса, но пока просто присвоем переменной для удобности
-                    mysqli_query($db, "DELETE FROM `Vakancies` WHERE `ip`='{$ip}'"); # Вместо TBL пишем название таблицы
-                    header("Location: adminpage.php"); # Пишем ссылку куда будет отправлять
-                    exit();
-                }
-                 
-                $query = mysqli_query($db, "SELECT `ip` FROM `Vakancies`"); # Вместо TBL напишите назвние своей таблицы
+            $rows = mysqli_num_rows($result);}
             ?>
 
             <div class="row">
-                <h1 id="vak">Vakancies</h1>
+                <h1 id="vak" class="mb-2">Vakancies</h1>
+                <a id = "addButton" class="mb-2" href="./insert.php">add</a>
                 <table class="table">
                     <thead class="thead-dark">
                         <tr>
@@ -83,33 +70,22 @@
                         for ($i = 0; $i < $rows; ++$i) {
                             $row = mysqli_fetch_row($result);
                             echo "<tr>";
-                            for ($j = 0; $j < 4; ++$j){
+                            for ($j = 1; $j < 5; ++$j){
                                 echo "<td>$row[$j]</td>";
                             }
-                            echo "<td><button class=\"atuin-btn\">Edit</button></td>";
-                            echo "<td><button class=\"atuin-btn1\">Delete</button></td>";
+                            echo "<td><a href=\"edit.php?id=$row[0]\" id=\"buttonDel\">edit</a></td>";
+                            echo "<td><a href=\"delete.php?id=$row[0]\" id=\"buttonDel\">del</a></td>";
                             echo "</tr>";
                         }
                         echo "</table>";
 
                         mysqli_free_result($result);
-                    }
+                    
 
                     mysqli_close($link);
 
 
                     ?>
-                    <form action="" method="post">
-                        <?php while($result = mysqli_fetch_assoc($query)) : ?>
-                            <tr>
-                                <td><?=$result["ip"]?></td>
-                            </tr>
-                            <tr>
-                                <td><input type="submit" value="Удалить" /></td>
-                            </tr>
-                            <input type="hidden" name="del" value="<?=$result["ip"]?>" />
-                        <?php endwhile; ?>
-                    </form>
             </div>
         </div>
     </div>
