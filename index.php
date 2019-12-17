@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="style.css">
     <title>Биржа труда</title>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Job</a>
@@ -56,15 +57,14 @@
         <?php
         require_once 'conection.php';
 
-        $link = mysqli_connect($host, $user, $password, $database) or die("Ошибка " . mysqli_error($link));
-
+        //$link = mysqli_connect($host, $user, $password, $database) or die("Ошибка " . mysqli_error($link));
 
         $query = "SELECT * FROM Vakancies";
 
         $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link));
         if ($result) {
             $rows = mysqli_num_rows($result);
-            ?>
+        ?>
             <div class="row">
                 <h1 id="vak">Vakancies</h1>
                 <table class="table">
@@ -79,46 +79,47 @@
                     </thead>
                     <tbody>
                     <?php
-                        for ($i = 0; $i < $rows; ++$i) {
-                            $row = mysqli_fetch_row($result);
-                            echo "<tr>";
-                            for ($j = 1; $j < 5; ++$j){
-                                echo "<td>$row[$j]</td>";
-                            }
-                            echo "<td><button class=\"atuin-btn\">Response</button></td>";
-                            echo "</tr>";
+                    for ($i = 0; $i < $rows; ++$i) {
+                        $row = mysqli_fetch_row($result);
+                        echo "<tr>";
+                        for ($j = 1; $j < 5; ++$j) {
+                            echo "<td>$row[$j]</td>";
                         }
-                        echo "</table>";
-
-                        mysqli_free_result($result);
+                        echo "<td><button class=\"atuin-btn\" onclick=\"jobResponse($row[0])\">Response</button></td>";
+                        echo "</tr>";
                     }
+                    echo "</table>";
 
-                    mysqli_close($link);
+                    mysqli_free_result($result);
+                }
+
+                mysqli_close($link);
 
 
                     ?>
                     </tbody>
                 </table>
             </div>
-            
+
             <!--Modal Form-->
             <div class="modal-container">
-            <div id="myModal" class="modal">
-            <span class="close">&times;</span>
-                    <form id="modal-content" class="col-lg-10">
+                <div id="myModal" class="modal">
+                    <span class="close">&times;</span>
+                    <form id="modal-content" class="col-lg-10" method="post" action="./sendAnswer.php">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Email address</label>
-                          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                          <small id="emailHelp" class="form-text text-muted">This address will receive a response from the employer</small>
+                            <input value="0" hidden id="job_id" name="job_id">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp">
+                            <small id="emailHelp" class="form-text text-muted">This address will receive a response from the employer</small>
                         </div>
                         <div class="form-group">
                             <label for="formGroupExampleInput">Name</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Your Name">
+                            <input type="text" class="form-control" id="formGroupExampleInput" name="name" placeholder="Your Name">
                         </div>
                         <button type="submit" class="btn btn-primary">Send</button>
-                      </form>
+                    </form>
                 </div>
-            </div>            
+            </div>
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

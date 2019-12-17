@@ -12,3 +12,7 @@ window.onclick = function(event){
         modal.style.display = "none";
     }
 }
+
+function jobResponse(id){
+    $('input[name = job_id').val(id);
+}
