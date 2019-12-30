@@ -19,7 +19,7 @@
         </div>
         <div class="row">
             <div class="col-lg-6">
-                <h1>Job postings</h1>
+                <h1 class="mb-3">Job postings</h1>
                 <table class="table">
                     <thead class="thead-dark">
                         <tr>
@@ -95,8 +95,9 @@
                                 for ($j = 1; $j < 5; ++$j) {
                                     echo "<td>$row[$j]</td>";
                                 }
-                                echo "<td><a href=\"edit.php?id=$row[0]\" id=\"buttonDel\">edit</a></td>";
+                                echo "<td><a href='http://localhost/labour-exchange/edit.php?id=$row[0]' id=\"buttonDel\">edit</a></td>";
                                 echo "<td><a href=\"delete.php?id=$row[0]\" id=\"buttonDel\">del</a></td>";
+                                
                                 echo "</tr>";
                             }
                             echo "</table>";
